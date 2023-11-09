@@ -41,6 +41,33 @@ int largo(int num){
     return length;
 }
 
+string cadenaDeEspacios(int n){
+    char cadenaDeEspacios[n + 1];  
+    for (int i = 0; i < n; ++i) {
+        cadenaDeEspacios[i] = ' ';
+    }
+    cadenaDeEspacios[n] = '\0';
+    return cadenaDeEspacios;
+}
+
+string cadenaGenero(bool g){
+    if (g){
+        return "Masculino ";
+    }
+    return "Femenino  ";
+}
+
+void mostrarCandidatosConNumero(Candidato candidatos[], int cantCandidatos){
+    cout << "LISTA DE CANDIDATOS "<<endl;
+    for (int i = 0; i < cantCandidatos ; i++){
+        cout << i+1 << ")";
+        cout << candidatos[i].nombre << " " <<candidatos[i].apellido << endl;
+    }   
+    cout << endl;
+}
+
+// VALIDACIÓN
+
 void pedirEntero(int &ent){
     while (!(cin >> ent)){
         cout << "Entrada no valida. Debe ingresar un numero entero. Vuelve a intentarlo: ";
@@ -80,31 +107,6 @@ void pedirGenero(bool &sexo){
             cin.clear();
         }
     }
-}
-
-string cadenaDeEspacios(int n){
-    char cadenaDeEspacios[n + 1];  
-    for (int i = 0; i < n; ++i) {
-        cadenaDeEspacios[i] = ' ';
-    }
-    cadenaDeEspacios[n] = '\0';
-    return cadenaDeEspacios;
-}
-
-string cadenaGenero(bool g){
-    if (g){
-        return "Masculino ";
-    }
-    return "Femenino  ";
-}
-
-void mostrarCandidatosConNumero(Candidato candidatos[], int cantCandidatos){
-    cout << "LISTA DE CANDIDATOS "<<endl;
-    for (int i = 0; i < cantCandidatos ; i++){
-        cout << i+1 << ")";
-        cout << candidatos[i].nombre << " " <<candidatos[i].apellido << endl;
-    }   
-    cout << endl;
 }
 
 // LEER DATOS
@@ -162,7 +164,6 @@ void leerVotantes(Votante votantes[], int &cantVotantes, int cantCandidatos){
 }
 
 // FUNCIONES PRINCIPALES DEL MENÚ
-
 
 void mostrarCandidatos(Candidato candidatos[], Votante votantes[], int cantCandidatos, int cantVotantes){
     cout << "DNI     |NOMBRE"<<cadenaDeEspacios(14)<<"|APELLIDO"<<cadenaDeEspacios(22)<<"|SEXO      "<<"|PARTIDO POLITICO"<<cadenaDeEspacios(34)<<"|NACIMIENTO"<<endl;
