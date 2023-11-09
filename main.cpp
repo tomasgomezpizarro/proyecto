@@ -115,11 +115,12 @@ string cadenaGenero(bool g){
 }
 
 void mostrarCandidatosConNumero(Candidato candidatos[], int cantCandidatos){
-    cout << "LISTA DE CANDIDATOS"<<endl;
+    cout << "LISTA DE CANDIDATOS "<<endl;
     for (int i = 0; i < cantCandidatos ; i++){
         cout << i+1 << ")";
-        cout << candidatos[i].nombre << candidatos[i].apellido << endl;
+        cout << candidatos[i].nombre << " " <<candidatos[i].apellido << endl;
     }   
+    cout << endl;
 }
 
 // LEER DATOS
@@ -193,25 +194,25 @@ void mostrarCandidatos(Candidato candidatos[], Votante votantes[], int cantCandi
 }
 
 void buscarVotosPorCandidato(Candidato candidatos[], Votante votantes[], int cantCandidatos, int cantVotantes){
-    
+
 }
 void crearArchivoTerceraEdad(Candidato candidatos[], Votante votantes[], int cantCandidatos, int cantVotantes){
-    
+
 }
 void crearArchivoGanador(Candidato candidatos[], Votante votantes[], int cantCandidatos, int cantVotantes){
-    
+
 }
 void buscarVotanteYVoto(Candidato candidatos[], Votante votantes[], int cantCandidatos, int cantVotantes){
-    
+
 }
 void listarNulos(Candidato candidatos[], Votante votantes[], int cantCandidatos, int cantVotantes){
-    
+
 }
 void listarCandidatosMenoresDe50(Candidato candidatos[], Votante votantes[], int cantCandidatos, int cantVotantes){
-    
+
 }
 void ordenarYMostrarPorVotos(Candidato candidatos[], Votante votantes[], int cantCandidatos, int cantVotantes){
-    
+
 }
 
 void menu(Candidato candidatos[], Votante votantes[], int cantCandidatos, int cantVotantes){
@@ -227,10 +228,13 @@ void menu(Candidato candidatos[], Votante votantes[], int cantCandidatos, int ca
     cout << "6. Listar votos nulos" << endl;
     cout << "7. Listar candidatos con menos 50 anios." << endl;
     cout << "8. Ordenar y mostrar candidatos por votos." << endl;
+    cout << endl;
+
     while (true) {
+        cout << "Elija una opcion (1-8) (0 para cerrar el programa): ";
         pedirMaxMin(opcion, 8, 0);
         if (opcion == 0){break ;}
-        opciones[opcion](candidatos, votantes, cantCandidatos, cantVotantes);
+        opciones[opcion-1](candidatos, votantes, cantCandidatos, cantVotantes);
     };
 
 }
@@ -262,7 +266,7 @@ int main(){
     cantVotantes = 5;
 
     // leerCandidatos(candidatos, cantCandidatos);
-    mostrarCandidatosConNumero(candidatos, cantCandidatos);
+    // mostrarCandidatosConNumero(candidatos, cantCandidatos);
     // leerVotantes(votantes, cantVotantes, cantCandidatos);
     menu(candidatos, votantes, cantCandidatos, cantVotantes);
 
