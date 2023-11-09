@@ -59,29 +59,13 @@ void pedirDni(int &ent){
     }
 }
 
-void pedirMaxMin(int &ent, int max=-1, int min=-1){
-    if (min > 0 && max > 0){
-        while (true){
-            pedirEntero(ent);
-            if (max >= ent && ent >= min) {break;}
-            cout << "Entrada no valida. Debe ingresar un numero como minimo "<< min << " y como maximo "<< max <<". Vuelve a intentarlo: ";
-        }
-    } else {
-        if (min > 0){
-            while (true){
-                pedirEntero(ent);
-                if (ent >= min) {break;}
-                cout << "Entrada no valida. Debe ingresar un numero como minimo "<< min << ". Vuelve a intentarlo: ";
-            }
-    } else {
-        if (max > 0){
-            while (true){
-                pedirEntero(ent);
-                if (max >= ent) {break;}
-            cout << "Entrada no valida. Debe ingresar un numero como maximo "<< max << ". Vuelve a intentarlo: ";
-            }
-    }}
-}}
+void pedirMaxMin(int &ent, int max, int min){
+    while (true){
+        pedirEntero(ent);
+        if (max >= ent && ent >= min) {break;}
+        cout << "Entrada no valida. Debe ingresar un numero como minimo "<< min << " y como maximo "<< max <<". Vuelve a intentarlo: ";
+    }
+}
 
 void pedirGenero(bool &sexo){
     char entrada[10];
