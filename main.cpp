@@ -41,6 +41,15 @@ int largo(int num){
     return length;
 }
 
+int obtenerEdad(Votante vot){
+    int diaHoy = 18, mesHoy = 11, anio = 2023, anios;
+    anios = anio - vot.fechaNacimiento.anio;
+    if (mesHoy < vot.fechaNacimiento.mes || (mesHoy == vot.fechaNacimiento.mes && diaHoy < vot.fechaNacimiento.dia)){
+        anios --;
+    }
+    return anios;
+}
+
 string cadenaDeEspacios(int n){
     char cadenaDeEspacios[n + 1];  
     for (int i = 0; i < n; ++i) {
@@ -188,12 +197,16 @@ void crearArchivoGanador(Candidato candidatos[], Votante votantes[], int cantCan
 
 }
 void buscarVotanteYVoto(Candidato candidatos[], Votante votantes[], int cantCandidatos, int cantVotantes){
-
+    int dni;
+    cout << "Ingrese el DNI del votante para obtener su informacion: ";
+    pedirDni(dni);
+    for (int i=0; i<cantVotantes; i++){
+        if (votantes[i].dni == dni){
+            cout << "(" << dni << ") con " << obtenerEdad(votantes[i]) << " anios voto a " << candidatos[votantes[i].votoCandidato].nombre << " " <<candidatos[votantes[i].votoCandidato].apellido << endl;
+        }
+    }
 }
 void listarNulos(Candidato candidatos[], Votante votantes[], int cantCandidatos, int cantVotantes){
-
-}
-void listarCandidatosMenoresDe50(Candidato candidatos[], Votante votantes[], int cantCandidatos, int cantVotantes){
 
 }
 void ordenarYMostrarPorVotos(Candidato candidatos[], Votante votantes[], int cantCandidatos, int cantVotantes){
@@ -202,7 +215,7 @@ void ordenarYMostrarPorVotos(Candidato candidatos[], Votante votantes[], int can
 
 void menu(Candidato candidatos[], Votante votantes[], int cantCandidatos, int cantVotantes){
     int opcion;
-    void (*opciones[])(Candidato*, Votante*, int, int) = {mostrarCandidatos, buscarVotosPorCandidato, crearArchivoTerceraEdad, crearArchivoGanador, buscarVotanteYVoto, listarNulos, listarCandidatosMenoresDe50, ordenarYMostrarPorVotos};
+    void (*opciones[])(Candidato*, Votante*, int, int) = {mostrarCandidatos, buscarVotosPorCandidato, crearArchivoTerceraEdad, crearArchivoGanador, buscarVotanteYVoto, listarNulos, ordenarYMostrarPorVotos};
 
     cout << "OPCIONES DEL MENU: " << endl;
     cout << "1. Mostrar candidatos." << endl;
@@ -211,13 +224,12 @@ void menu(Candidato candidatos[], Votante votantes[], int cantCandidatos, int ca
     cout << "4. Determinar ganador" << endl;
     cout << "5. Buscar votante y voto." << endl;
     cout << "6. Listar votos nulos" << endl;
-    cout << "7. Listar candidatos con menos 50 anios." << endl;
-    cout << "8. Ordenar y mostrar candidatos por votos." << endl;
+    cout << "7. Ordenar y mostrar candidatos por votos." << endl;
     cout << endl;
 
     while (true) {
-        cout << "Elija una opcion (1-8) (0 para cerrar el programa): ";
-        pedirMaxMin(opcion, 8, 0);
+        cout << "Elija una opcion (1-7) (0 para cerrar el programa): ";
+        pedirMaxMin(opcion, 7, 0);
         if (opcion == 0){break ;}
         opciones[opcion-1](candidatos, votantes, cantCandidatos, cantVotantes);
     };
@@ -242,11 +254,11 @@ int main(){
     cantCandidatos = 5;
 
     Votante votantes[5] = {
-        {666666, 'M', "Votante1", {6, 6, 3000}, 1},
+        {666666, 'M', "Votante1", {6, 6, 2003}, 1},
         {777777, 'F', "Votante2", {7, 7, 1995}, 2},
         {888888, 'M', "Votante3", {8, 8, 1990}, 3},
         {999999, 'F', "Votante4", {9, 9, 1985}, 4},
-        {101010, 'M', "Votante5", {10, 10, 1980}, 5},
+        {666666, 'M', "Votante5", {10, 10, 1980}, 5},
     };
     cantVotantes = 5;
 
