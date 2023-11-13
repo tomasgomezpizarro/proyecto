@@ -198,11 +198,18 @@ void crearArchivoGanador(Candidato candidatos[], Votante votantes[], int cantCan
 }
 void buscarVotanteYVoto(Candidato candidatos[], Votante votantes[], int cantCandidatos, int cantVotantes){
     int dni;
-    cout << "Ingrese el DNI del votante para obtener su informacion: ";
-    pedirDni(dni);
-    for (int i=0; i<cantVotantes; i++){
-        if (votantes[i].dni == dni){
-            cout << "(" << dni << ") con " << obtenerEdad(votantes[i]) << " anios voto a " << candidatos[votantes[i].votoCandidato].nombre << " " <<candidatos[votantes[i].votoCandidato].apellido << endl;
+    bool existe = false;
+    while (!existe){
+        cout << "Ingrese el DNI del votante para obtener su informacion: ";
+        pedirDni(dni);
+        for (int i=0; i<cantVotantes; i++){
+            if (votantes[i].dni == dni){
+                cout << "(" << dni << ") con " << obtenerEdad(votantes[i]) << " anios voto a " << candidatos[votantes[i].votoCandidato-1].nombre << " " <<candidatos[votantes[i].votoCandidato-1].apellido << endl;
+                existe = true;
+            }
+        }
+        if (!existe){
+            cout << "No existe el DNI en la lista de votantes, vuelva a intentarlo. " << endl;
         }
     }
 }
