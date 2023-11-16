@@ -100,7 +100,7 @@ void calcularVotos(Candidato candidatos[], Votante votantes[], int cantCandidato
 }
 
 // VALIDACIÓN
-bool esNombreApellidoValido(const char *cadena) {
+bool esNombreApellidoValido(const char cadena[]) {
     for (int i = 0; cadena[i] != '\0'; i++) {
         if (!isalpha(cadena[i]) && !isspace(cadena[i])) {
             return false;
@@ -109,7 +109,7 @@ bool esNombreApellidoValido(const char *cadena) {
     return true;
 }
 
-void pedirNombreApellido(char *nombreOApellido, int longitud) {
+void pedirNombreApellido(char nombreOApellido[], int longitud) {
     do {
         cin.getline(nombreOApellido, longitud, '\n');
         if (!esNombreApellidoValido(nombreOApellido)) {
